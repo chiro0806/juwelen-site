@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>JUWELEN ENSEMBLE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+@font-face{
+    font-family:'Onyxn';
+    src:url('Onyxn.otf') format('opentype');
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    background:#f5f5f5;
+    overflow:hidden;
+}
+
+/* 画面共通 */
+.screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        visibility 1.2s ease;
+}
+
+/* ---------- オープニング画面 ---------- */
+.opening-screen{
+    background:#f5f5f5;
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    z-index:2;
+}
+
+.opening-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-40px) scale(1.02);
+}
+
+.opening-container{
+    text-align:center;
+    transform:scale(1.25);
+}
+
+/* JUWELEN */
+.opening-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:220px;
+    letter-spacing:4px;
+    color:#000;
+    opacity:0;
+    transform:translateX(-220px) scaleY(1.3);
+    animation:titleSlide 1.4s forwards;
+}
+
+/* ダイヤ */
+.diamond{
+    width:130px;
+    margin-top:-60px;
+    opacity:0;
+    animation:fade 1.5s forwards;
+    animation-delay:1s;
+}
+
+/* ensemble */
+.opening-subtitle{
+    font-family:'Onyxn', serif;
+    font-size:110px;
+    color:#000;
+    margin-top:-8px;
+    opacity:0;
+    transform:translateX(220px);
+    animation:subtitleSlide 1.4s forwards;
+    animation-delay:1.2s;
+}
+
+/* 五線譜 */
+.staff{
+    position:relative;
+    width:820px;
+    height:110px;
+    margin:80px auto 0;
+    overflow:hidden;
+}
+
+/* 五線 */
+.line{
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:#000;
+}
+
+.line:nth-child(1){ top:20px; }
+.line:nth-child(2){ top:30px; }
+.line:nth-child(3){ top:40px; }
+.line:nth-child(4){ top:50px; }
+.line:nth-child(5){ top:60px; }
+
+/* 音符レイヤー */
+.notes-layer{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+/* 音符1個 */
+.note{
+    position:absolute;
+    left:100%;
+    color:#000;
+    line-height:1;
+    white-space:nowrap;
+    will-change:transform,left,top;
+}
+
+/* ---------- メニュー画面 ---------- */
+.main-screen{
+    background:#f3f3f3;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(40px);
+    z-index:1;
+}
+
+.main-screen.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.main-container{
+    text-align:center;
+}
+
+/*.main-title{
+    font-size:70px;
+    letter-spacing:5px;
+    color:#4a78b6;
+    opacity:0;
+    transform:translateY(30px);
+}
+
+.main-subtitle{
+    font-size:40px;
+    margin-bottom:40px;
+    color:#4a78b6;
+    opacity:0;
+    transform:translateY(30px);
+}
+*/
+
+.main-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:220px;
+    letter-spacing:4px;
+    color:#4a78b6;
+    line-height:1;
+    opacity:0;
+    transform:translateY(30px);
+}
+
+.main-subtitle{
+    font-family:'Onyxn', serif;
+    font-size:110px;
+    color:#4a78b6;
+    margin-top:-8px;
+    margin-bottom:40px;
+    line-height:1;
+    text-transform:none;
+    opacity:0;
+    transform:translateY(30px);
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#333;
+    font-size:18px;
+    padding:12px 25px;
+    border-bottom:4px solid #e0b200;
+    opacity:0;
+    transform:translateY(20px);
+    transition:color .3s ease;
+}
+
+.menu a:hover{
+    color:#4a78b6;
+}
+
+/* メニュー画面表示後に順番に出す */
+.main-screen.show .main-title{
+    animation:fadeUp 1.2s forwards;
+}
+
+.main-screen.show .main-subtitle{
+    animation:fadeUp 1.2s forwards;
+    animation-delay:0.25s;
+}
+
+.main-screen.show .menu a:nth-child(1){
+    animation:fadeUp 1s forwards;
+    animation-delay:0.5s;
+}
+.main-screen.show .menu a:nth-child(2){
+    animation:fadeUp 1s forwards;
+    animation-delay:0.7s;
+}
+.main-screen.show .menu a:nth-child(3){
+    animation:fadeUp 1s forwards;
+    animation-delay:0.9s;
+}
+
+
+/* ---------- アニメーション ---------- */
+@keyframes titleSlide{
+    to{
+        opacity:1;
+        transform:translateX(0) scaleY(1.3);
+    }
+}
+
+@keyframes subtitleSlide{
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fade{
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- オープニング -->
+<section class="screen opening-screen" id="openingScreen">
+    <div class="opening-container">
+        <div class="opening-title">JUWELEN</div>
+        <img src="diamond.png" class="diamond" alt="diamond">
+        <div class="opening-subtitle">ensemble</div>
+
+        <div class="staff" id="staff">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="notes-layer" id="notesLayer"></div>
+        </div>
+    </div>
+</section>
+
+<!-- メイン画面 -->
+<section class="screen main-screen" id="mainScreen">
+    <div class="main-container">
+        <div class="main-title">JUWELEN</div>
+        <div class="main-subtitle">ensemble</div>
+
+        <div class="menu">
+            <a href="about.html">ユヴェーレン・アンサンブルについて</a>
+            <a href="event.html">演奏会イベント情報</a>
+            <a href="https://forms.gle/M8D5wXZhk56VuLwZ8" target="_blank" rel="noopener noreferrer">
+                演奏レッスン依頼・お問い合わせ
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+const notesLayer = document.getElementById('notesLayer');
+const staff = document.getElementById('staff');
+const openingScreen = document.getElementById('openingScreen');
+const mainScreen = document.getElementById('mainScreen');
+
+/* ランダムなのは種類だけ */
+const symbols = ['♪','♫','♩','♬','𝄞','𝄢'];
+
+/* 固定設定 */
+const NOTE_SPEED = 0.5;
+const SPAWN_INTERVAL = 850;
+const NOTE_SIZE = 42;
+const BASE_Y = 34;
+const WAVE_AMPLITUDE = 8;
+const WAVE_SPEED = 0.004;
+
+let noteTimer = null;
+let openingClosed = false;
+
+function randomInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createNote(){
+    if(openingClosed) return;
+
+    const el = document.createElement('span');
+    el.className = 'note';
+    el.textContent = symbols[randomInt(0, symbols.length - 1)];
+    el.style.fontSize = NOTE_SIZE + 'px';
+
+    const startX = staff.clientWidth + 20;
+    let x = startX;
+    const phase = randomInt(0, 628) / 100;
+
+    notesLayer.appendChild(el);
+
+    function animate(){
+        if(openingClosed){
+            el.remove();
+            return;
+        }
+
+        x -= NOTE_SPEED;
+        const y = BASE_Y + Math.sin(performance.now() * WAVE_SPEED + phase) * WAVE_AMPLITUDE;
+
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+
+        if(x < -80){
+            el.remove();
+            return;
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+function startNotes(){
+    createNote();
+    noteTimer = setInterval(createNote, SPAWN_INTERVAL);
+}
+
+function switchToMain(){
+    openingClosed = true;
+    clearInterval(noteTimer);
+
+    openingScreen.classList.add('hide');
+    mainScreen.classList.add('show');
+}
+
+
+
+
+/*
+  オープニング全体の見せ時間
+  1.4秒でタイトル
+  1.0〜1.5秒でダイヤ
+  1.2〜2.6秒でsubtitle
+  その後少し見せてから切り替え
+*/
+const params = new URLSearchParams(window.location.search);
+const skip = params.get("skip");
+
+if(skip === "1"){
+    // オープニングを即スキップ
+    openingClosed = true;
+    openingScreen.classList.add('hide');
+    mainScreen.classList.add('show');
+}else{
+    // 通常どおりオープニング再生
+    startNotes();
+    setTimeout(switchToMain, 5200);
+}
+</script>
+
+</body>
+</html>

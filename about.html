@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ユヴェーレン・アンサンブルについて | JUWELEN ENSEMBLE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+@font-face{
+    font-family:'Onyxn';
+    src:url('Onyxn.otf') format('opentype');
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    background:
+        linear-gradient(180deg, #f7f7f7 0%, #f2f2f2 100%);
+    color:#333;
+    line-height:1.9;
+}
+
+a{
+    color:inherit;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg, rgba(74,120,182,0.96), rgba(53,94,150,0.96));
+    color:#fff;
+    padding:72px 20px 64px;
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+}
+
+.hero::before{
+    width:340px;
+    height:340px;
+    top:-120px;
+    right:-80px;
+}
+
+.hero::after{
+    width:240px;
+    height:240px;
+    bottom:-100px;
+    left:-70px;
+}
+
+.hero-inner{
+    position:relative;
+    z-index:1;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.hero-kicker{
+    font-size:14px;
+    letter-spacing:0.2em;
+    opacity:0.9;
+    margin-bottom:14px;
+}
+
+.hero-title{
+    margin:0;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:86px;
+    letter-spacing:6px;
+    line-height:0.95;
+}
+
+.hero-subtitle{
+    margin:12px 0 0;
+    font-family:'Onyxn', serif;
+    font-size:54px;
+    line-height:1.1;
+}
+
+.hero-text{
+    margin:28px 0 0;
+    max-width:760px;
+    font-size:17px;
+    opacity:0.96;
+}
+
+.container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:56px 20px 90px;
+}
+
+.intro-card{
+    background:#fff;
+    border-radius:24px;
+    box-shadow:0 14px 40px rgba(0,0,0,0.08);
+    padding:34px 34px 30px;
+    margin-top:-34px;
+    position:relative;
+    z-index:2;
+}
+
+.section{
+    margin-top:56px;
+}
+
+.member-photo:has(img)::before{
+    display:none;
+}
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:0 0 26px;
+    font-size:34px;
+    color:#2f5d98;
+    font-weight:700;
+}
+
+.section-title::before{
+    content:"";
+    width:8px;
+    height:34px;
+    border-radius:999px;
+    background:#e0b200;
+    flex-shrink:0;
+}
+
+.section-lead{
+    margin:0 0 28px;
+    color:#555;
+    font-size:16px;
+}
+
+.member-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:26px;
+}
+
+.member-card{
+    background:#fff;
+    border-radius:24px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.07);
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,0.05);
+}
+
+.member-top{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:0;
+    min-height:260px;
+}
+
+.member-photo{
+    background:
+        linear-gradient(180deg, rgba(74,120,182,0.18), rgba(74,120,182,0.08));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:20px;
+}
+
+.member-photo::before{
+    content:"PHOTO";
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:140px;
+    height:180px;
+    border:2px dashed rgba(74,120,182,0.4);
+    border-radius:18px;
+    color:#4a78b6;
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:3px;
+    font-size:34px;
+    background:rgba(255,255,255,0.5);
+}
+
+.member-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:0;
+    display:block;
+}
+
+.member-info{
+    padding:26px 28px 22px;
+}
+
+.instrument{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:#4a78b6;
+    background:rgba(74,120,182,0.1);
+    border-radius:999px;
+    padding:6px 12px;
+    margin-bottom:14px;
+}
+
+.member-name{
+    margin:0;
+    font-size:30px;
+    line-height:1.3;
+    color:#1f1f1f;
+}
+
+.member-name .jp{
+    display:block;
+    font-size:30px;
+    font-weight:700;
+}
+
+.member-name .en{
+    display:block;
+    font-size:16px;
+    color:#666;
+    margin-top:4px;
+    letter-spacing:0.04em;
+}
+
+.member-body{
+    padding:0 28px 28px;
+    font-size:15.5px;
+    color:#444;
+}
+
+.member-body p{
+    margin:0 0 12px;
+}
+
+.member-body p:last-child{
+    margin-bottom:0;
+}
+
+.guest-section .section-title::before{
+    background:#6aa879;
+}
+
+.note-box{
+    margin-top:24px;
+    background:#f8f9fb;
+    border:1px solid rgba(74,120,182,0.12);
+    border-radius:18px;
+    padding:20px 22px;
+    font-size:14px;
+    color:#666;
+}
+
+.back-wrap{
+    text-align:center;
+    margin-top:54px;
+}
+
+.back-link{
+    display:inline-block;
+    text-decoration:none;
+    background:#4a78b6;
+    color:#fff;
+    padding:14px 28px;
+    border-radius:999px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    box-shadow:0 10px 22px rgba(74,120,182,0.28);
+    transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+}
+
+.back-link:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(74,120,182,0.34);
+}
+
+.role{
+    font-size:14px;
+    color:#555;
+    font-weight:500;
+    margin-top:-6px;
+    margin-bottom:12px;
+    letter-spacing:0.08em;
+}
+
+
+.about-ensemble{
+    width:100%;
+    margin:40px 0 56px;
+    background:#fff;
+    border-radius:22px;
+    padding:42px 48px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.05);
+}
+
+.about-title{
+    font-size:26px;
+    font-weight:700;
+    color:#2f5d98;
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.about-title::before{
+    content:"";
+    width:6px;
+    height:26px;
+    background:#e0b200;
+    border-radius:999px;
+}
+
+.about-text{
+    font-size:17px;
+    color:#444;
+    line-height:2.1;
+    margin-bottom:16px;
+}
+
+.about-text:last-child{
+    margin-bottom:0;
+}
+
+
+@media (max-width: 980px){
+    .member-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-title{
+        font-size:72px;
+    }
+
+    .hero-subtitle{
+        font-size:48px;
+    }
+}
+
+@media (max-width: 720px){
+    .hero{
+        padding:60px 18px 54px;
+    }
+
+    .hero-title{
+        font-size:58px;
+        letter-spacing:4px;
+    }
+
+    .hero-subtitle{
+        font-size:40px;
+    }
+
+    .intro-card{
+        padding:26px 22px 24px;
+        margin-top:-24px;
+        border-radius:20px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .member-top{
+        grid-template-columns:1fr;
+    }
+
+    .member-photo{
+        min-height:260px;
+    }
+
+    .member-info{
+        padding:22px 22px 18px;
+    }
+
+    .member-body{
+        padding:0 22px 22px;
+    }
+
+    .member-name .jp{
+        font-size:26px;
+    }
+    .about-ensemble{
+    padding:28px 22px;
+    margin:28px auto 40px;
+}
+
+    .about-text{
+        font-size:15px;
+        line-height:1.95;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-kicker">ABOUT THE ENSEMBLE</div>
+        <h1 class="hero-title">JUWELEN</h1>
+        <div class="hero-subtitle">ensemble</div>
+        <p class="hero-text">
+            Juwelenとはドイツ語で宝石を表すJuwelの複数形。宝石は自然の中で長い歴史を経た産物。原石を磨き輝きを放ちます。
+            作曲者によって誕生し、長い歴史を紡いできた美しい音楽と同じ。
+            ユヴェーレンは、演奏を通じて音楽の価値を継承し、それを未来へと繋いでいきます。
+            人の手により創り出し伝え続ける音楽の大切さを、子どもたちへの音楽教育を通して普及し、皆が親しみながら本格的に学ぶ機会を広げていく団体です。
+        </p>
+    </div>
+</header>
+
+
+<main class="container">
+    <section class="about-ensemble">
+        <h2 class="about-title">Juwelenの音楽活動</h2>
+        <p class="about-text">
+            ユヴェーレン・アンサンブルは吹奏楽指導を通じて集まったメンバーで構成。
+            フルート、クラリネット、トランペットを中心とした管楽器編成、そこに音楽を包括するピアノを入れることで、
+            吹奏楽音楽とは異なる世界観を取り入れている。
+        </p>
+        <p class="about-text">
+            ジャンルにとらわれない独創性あるコンサートは毎回好評を得ており、再公演の要望が多い。
+            また、様々な世代が集まってのアンサンブル・レクチャーや、目的を明確にし個々のニーズに合わせた
+            きめ細やかな講習の開催など、いずれも好評を得ている。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">メンバー</h2>
+        <p class="section-lead">
+            演奏、教育、レクチャーなど、それぞれの専門性による活動をしています。
+        </p>
+
+        <div class="member-grid">
+
+            <article class="member-card">
+                <div class="member-top">
+                    <div class="member-photo">
+                        
+                        <img src="tomoka-masaki.png" alt="正木知花">
+                    </div>
+                    <div class="member-info">
+                        <div class="instrument">Flute</div>
+                        <h3 class="member-name">
+                            <span class="jp">正木知花</span>
+                            <span class="en">Tomoka Masaki</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="member-body">
+                    <p>兵庫県神戸市出身。県立兵庫高等学校、東京藝術大学音楽学部器楽科を経て同大学院音楽研究科修士課程修了。</p>
+                    <p>第9回神戸新人音楽賞コンクール優秀賞。第36回板橋クラシック音楽オーディション最優秀賞。第6回刈谷国際音楽コンクール準グランプリ（最高位）。第21回日本フルートコンヴェンションアルトフルート部門入選。</p>
+                    <p>元東京シティ・フィルハーモニック管弦楽団フルート・ピッコロ奏者。現在はチェコ在住、オーケストラ奏者として活躍中。</p>
+                </div>
+            </article>
+
+            <article class="member-card">
+                <div class="member-top">
+                    <div class="member-photo">
+                        <img src="kazuhiro-nozawa.jpg" alt="野沢和弘">
+                    </div>
+                    <div class="member-info">
+                        <div class="instrument">Clarinet</div>
+                        <h3 class="member-name">
+                            <span class="jp">野沢和弘</span>
+                            <span class="en">Kazuhiro Nozawa</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="member-body">
+                    <p>香川県出身。高松第一高等学校音楽科、武蔵野音楽大学器楽科卒業。クラリネットを石川孝司、藤井一男、兼氏康雄の各氏に師事。</p>
+                    <p>バスクラリネットでは、CD「スーパー・バスクラ vol.1〜5」、「クリスマス・バスクラ」（コジマ録音）を発表。</p>
+                    <p>現在、クラリネット・トランペット・ドラムという珍しい編成の［FU・KU・WA・U・CHI］や、様々な楽器による［ユヴェーレン アンサンブル］、伝統的な編成の木管アンサンブル「クラルテ」など、様々なグループのメンバーとして活動している。</p>
+                    <p>TV、CM、映画、ミュージックビデオ等の演奏サポートとしての活動や、ソロ、室内楽、吹奏楽、オーケストラなどでの演奏活動の他、多数の小・中・高校の部活動での吹奏楽のトレーナー、吹奏楽コンクールや定期演奏会等の指揮、東京都部活動指導員、新渡戸文化高等学校音楽コース非常勤講師として後進の指導にもあたっている。</p>
+                </div>
+            </article>
+
+            <article class="member-card">
+                <div class="member-top">
+                    <div class="member-photo">
+                        <img src="kazuko-mashiko.jpg" alt="益子和子">
+                    </div>
+                    <div class="member-info">
+                        <div class="instrument">Trumpet</div>
+                        <h3 class="member-name">
+                            <span class="jp">益子和子</span>
+                            <span class="en">Kazuko Mashiko</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="member-body">
+                    <p>武蔵野音楽大学音楽学部器楽学科卒業。トランペットを戸部豊、元井勤の両氏に師事。指揮法を新通英洋氏に師事。</p>
+                    <p>都内を中心とした演奏活動のほか、小・中・高校のバンド・アドバイザーとして年間数多くの吹奏楽、金管バンドの指導を行っている。特に近年では時代の変化に伴いバンド活動の形態に多様性が生まれ、各実態に即した運営や活動内容、バンドの音楽的課題目標について、専門知識と経験に基づいた内容を提案し新しいバンドづくりを目指している。</p>
+                    <p>東京都小学校音楽教育研究会管楽器研究会の夏季ゼミナールでは、合奏指導講座と指揮法講座の講師を務める。東京都小学校管楽器演奏会、足立区、北区、葛飾区、各研究演奏会では講師として招かれ、足立区、葛飾区の小学校教育研究会の実技研修会では指揮法講座を担当する。</p>
+                    <p>FU・KU・WA・U・CHIのメンバー。ユヴェーレン・アンサンブル代表、ユヴェーレン音楽協会の会長。</p>
+                </div>
+            </article>
+
+            <article class="member-card">
+                <div class="member-top">
+                    <div class="member-photo">
+                        <img src="miyako-ishikawa.jpg" alt="石川美也子">
+                    </div>
+                    <div class="member-info">
+                        <div class="instrument">Piano</div>
+                        <div class="role">Special Guest / Music Advisor</div>
+                        <h3 class="member-name">
+                            <span class="jp">石川美也子</span>
+                            <span class="en">Miyako Ishikawa</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="member-body">
+                    <p>桐朋学園大学音楽学部演奏学科卒業。東京藝術大学大学院音楽研究科修士課程修了。PTNA E級全国決勝大会第1位、F級全国決勝大会第2位。ほか、多数のコンクールやオーディションで入賞。</p>
+                    <p>在学中より演奏活動をはじめ、TVドラマでの演奏やPIANO CLUB（服部克久監修）のVTR出演や、数多くの演奏家との共演にて全国各地の演奏会に出演。2001年熊川哲也K-ballet company全国ツアー「ラプソディー」において協奏曲ソリストとして全公演に出演。様々なオーケストラとの協奏曲共演も多い。</p>
+                    <p>近年ではベルリンフィル首席奏者タルケヴィ氏、ウィーンフィル首席奏者シュー氏との共演やソロリサイタルにて日本未発表作品の初演委託等、ソロやアンサンブルにおいて全国各地で多岐にわたる活動をしている。</p>
+                    <p>また、コンクール入賞や音大へ多数の生徒を送り出し、数々の指導者賞を受賞している。日本クラシック音楽コンクール（全国大会）ほか、各コンクールの審査員を務める。現在、佐賀大学教育学部（ピアノ）准教授。</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+    <div class="back-wrap">
+        <a href="index.html?skip=1" class="back-link">トップページへ戻る</a>
+    </div>
+</main>
+
+</body>
+</html>
